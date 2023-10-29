@@ -1,4 +1,4 @@
-package tn.esprit.devops_project.services;
+package tn.esprit.devops_project.services.ServiceTest;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,6 +18,8 @@ import tn.esprit.devops_project.entities.Operator;
 import tn.esprit.devops_project.entities.Product;
 import tn.esprit.devops_project.entities.ProductCategory;
 import tn.esprit.devops_project.entities.Stock;
+import tn.esprit.devops_project.services.ProductServiceImpl;
+import tn.esprit.devops_project.services.StockServiceImpl;
 
 import java.util.List;
 

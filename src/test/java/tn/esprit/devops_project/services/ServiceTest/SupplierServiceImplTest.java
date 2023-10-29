@@ -1,4 +1,4 @@
-package tn.esprit.devops_project.services;
+package tn.esprit.devops_project.services.ServiceTest;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import org.junit.jupiter.api.Test;
@@ -14,6 +14,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.devops_project.entities.Supplier;
 import tn.esprit.devops_project.repositories.SupplierRepository;
+import tn.esprit.devops_project.services.SupplierServiceImpl;
 
 import java.util.List;
 import java.util.Optional;
