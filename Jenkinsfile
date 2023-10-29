@@ -42,7 +42,9 @@ pipeline {
                 dir('Frant') {
                     script {
                         
-                        sh 'npm install' 
+                        
+                        sh 'rm -rf /var/lib/jenkins/workspace/test3/Frant/node_modules'
+                        sh  'npm install' 
                         sh 'ng build'      
                     }
                 }
