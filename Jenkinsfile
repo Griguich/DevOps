@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Run Unit Tests') {
             steps {
-    
+
                 sh 'mvn clean install'
 
             }
