@@ -1,6 +1,8 @@
 pipeline {
     agent any
-    
+     tools{
+        nodejs 'frant'
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -30,6 +32,18 @@ pipeline {
                 dir('Back') {
                     script {
                         sh 'mvn clean install' 
+                    }
+                }
+            }
+        }
+        
+        stage('Build Frontend') {
+            steps {
+                dir('Frant') {
+                    script {
+                        
+                        sh 'npm install' 
+                        sh 'ng build'      
                     }
                 }
             }
