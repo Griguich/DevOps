@@ -64,7 +64,8 @@ pipeline {
             }
         }      
         
-        }
+        
+
         stage('Build & Push Docker Image (Backend)') {
             steps {
                 dir('Back') {
