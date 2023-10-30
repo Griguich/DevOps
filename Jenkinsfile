@@ -69,7 +69,7 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image (Frontnd)') {
+        stage('Build Docker Image (Frontend)') {
             steps {
                 dir('Frant') {
                     script {
