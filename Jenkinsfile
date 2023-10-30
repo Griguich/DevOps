@@ -5,7 +5,7 @@ pipeline {
     }
     
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('Griguich')
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
     stages {
         stage('Checkout') {
