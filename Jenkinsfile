@@ -57,7 +57,7 @@ pipeline {
         stage('Login Docker') {
         steps {
         script {
-            sh 'echo @-cL.Xw3(M:U99z | docker login -u ghazi11 --password-stdin'
+            sh 'echo ghazi1234 | docker login -u ghazi11 --password-stdin'
                 }
             }
         }      
