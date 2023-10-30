@@ -57,9 +57,7 @@ pipeline {
         stage('Login Docker') {
         steps {
         script {
-            def username = DOCKERHUB_CREDENTIALS_USR
-            echo "Docker Hub Username: ${username}"
-            sh "echo ${DOCKERHUB_CREDENTIALS_PSW} | docker login -u ${username} --password-stdin"
+            sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 }
             }
         }      
