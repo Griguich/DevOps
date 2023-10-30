@@ -3,6 +3,10 @@ pipeline {
      tools{
         nodejs 'frant'
     }
+    
+    environment {
+    DOCKERHUB_CREDENTIALS = credentials('DockerHub')
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -10,7 +14,7 @@ pipeline {
             }
         }
         
-        stage('Send Email Notification') {
+        /*stage('Send Email Notification') {
             steps {
                 script {
                     def contenuReadMe = readFile('README.md')
@@ -26,8 +30,8 @@ pipeline {
                     )
                 }
             }
-        }
-        stage('Run Unit Tests') {
+        }*/
+        /*stage('Run Unit Tests') {
             steps {
                 dir('Back') {
                     script {
@@ -35,9 +39,9 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
         
-        stage('Build Frontend') {
+        /*stage('Build Frontend') {
             steps {
                 dir('Frant') {
                     script {
@@ -49,7 +53,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
          
         stage('Login Docker') {
 
