@@ -89,6 +89,7 @@ pipeline {
         
         stage('Deploy Front/Back/DB') {
             steps {
+                dir('Frant') {
                 script {
                     sh 'docker-compose -f docker-compose.yml up -d'                        
                 }
