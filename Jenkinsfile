@@ -31,7 +31,7 @@ pipeline {
                 }
             }
         }
-        /*stage('Run Unit Tests') {
+        stage('Run Unit Tests') {
             steps {
                 dir('Back') {
                     script {
@@ -39,9 +39,9 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
         
-       /* stage('Build Frontend') {
+        stage('Build Frontend') {
             steps {
                 dir('Frant') {
                     script {
@@ -53,7 +53,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
         stage('Login Docker') {
         steps {
         script {
