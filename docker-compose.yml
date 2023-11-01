@@ -3,9 +3,9 @@ services:
   backend:
     image: ghazi11/back
     ports:
-      - "8080:8080"  # Map port 8080 on the host to port 8080 on the container
+      - "8080:8080"  # Map port 8081 on the host to port 8080 on the container
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/devops?createDatabaseIfNotExist=true  # Update port to 3333
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3333/devops?createDatabaseIfNotExist=true  # Update port to 3333
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
 
@@ -17,7 +17,7 @@ services:
   mysql:
     image: mysql:latest
     ports:
-      - "3306:3306"  # Map port 3306 on the host to port 3306 on the container
+      - "3333:3306"  # Map port 3333 on the host to port 3333 on the container
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: devops
