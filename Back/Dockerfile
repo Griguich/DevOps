@@ -1,14 +1,7 @@
-# Use a base image with Java and Alpine Linux
-FROM openjdk:11-jre-slim
+FROM openjdk:11
 
-# Set the working directory within the container
-WORKDIR /app
+WORKDIR /DevOps_Project
 
-# Copy the JAR file from your build context to the container
-COPY target/your-spring-boot-app.jar /app/app.jar
+COPY target/DevOps_Project-1.0.jar DevOps_Project.jar
 
-# Expose the port your Spring Boot application will run on
-EXPOSE 8081
-
-# Command to run the Spring Boot application
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "DevOps_Project.jar"]
