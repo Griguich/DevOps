@@ -1,21 +1,7 @@
-# Use a base image with Node.js and Alpine Linux
-FROM node:16-alpine
+FROM nginx:latest
 
-# Set the working directory within the container
-WORKDIR /Frant
+RUN rm /etc/nginx/conf.d/default.conf
 
-# Copy the Angular application source code to the container
-COPY . .
+COPY dist/summer-workshop-angular /usr/share/nginx/html
 
-# Install Angular CLI globally (optional, if not already installed)
-RUN npm install -g @angular/cli
-
-# Install dependencies and build the Angular app
-RUN npm install
-RUN ng build 
-
-# Expose the port your Angular app will run on (e.g., 80)
-EXPOSE 80
-
-# Command to serve the Angular app
 CMD ["nginx", "-g", "daemon off;"]
