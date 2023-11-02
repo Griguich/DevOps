@@ -1,5 +1,5 @@
 # Use a base image with Node.js and Alpine Linux
-FROM node:14-alpine
+FROM node:16-alpine
 
 # Set the working directory within the container
 WORKDIR /Frant
