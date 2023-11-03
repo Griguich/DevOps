@@ -1,7 +1,7 @@
-FROM openjdk:11
+FROM openjdk:8-alpine
 
 WORKDIR /Back
 
-COPY target/DevOps_Project-1.0.jar DevOps_Project.jar
+ADD target/DevOps_Project-1.0.jar DevOps_Project.jar
 
-CMD ["java", "-jar", "DevOps_Project.jar"]
+ENTRYPOINT ["java", "-jar", "DevOps_Project.jar"]
