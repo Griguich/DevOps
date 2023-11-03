@@ -1,5 +1,17 @@
 version: '3'
 services:
+  mysql:
+    image: mysql:latest
+    container_name: mysqldb
+    ports:
+      - "3333:3306"  # Map port 3333 on the host to port 3306 on the container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: devops
+    volumes:
+      - /home/ghazi/Desktop/DB:/var/lib/mysql
+    restart: unless-stopped
+  
   backend:
     image: ghazi11/back
     ports:
@@ -16,14 +28,4 @@ services:
     ports:
       - "80:80"  # Map port 80 on the host to port 80 on the container
 
-  mysql:
-    image: mysql:latest
-    container_name: mysqldb
-    ports:
-      - "3333:3306"  # Map port 3333 on the host to port 3306 on the container
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: devops
-    volumes:
-      - /home/ghazi/Desktop/DB:/var/lib/mysql
-    restart: unless-stopped
+  
