@@ -13,7 +13,7 @@ EXPOSE 8082
 RUN apt-get update && apt-get install -y curl
 
 # Copy the JAR file built in Stage 1 to the container
-COPY --from=builder /app/target/DevOps_Project-1.0.jar /DevOps_Project-1.0.jar
+COPY --from=builder /Back/target/DevOps_Project-1.0.jar /DevOps_Project-1.0.jar
 
 ENV JAVA_OPTS="-Dlogging.level.org.springframework.security=DEBUG -Djdk.tls.client.protocols=TLSv1.2"
 ENTRYPOINT ["java", "-jar", "/DevOps_Project-1.0.jar"]
