@@ -21,7 +21,6 @@ services:
     build: .
     ports:
       - "8082:8080"  # Map port 8081 on the host to port 8080 on the container
-    restart: always
     networks:
       - docker-net
     environment:
