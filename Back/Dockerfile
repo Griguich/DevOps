@@ -1,19 +1,10 @@
-FROM maven:3.8.3-openjdk-8 AS builder
-WORKDIR />Back
-COPY pom.xml .
-RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
-COPY src/ src/
-RUN --mount=type=cache,target=/root/.m2 mvn package
 
-FROM openjdk:8-jre-slim
-## Old port : EXPOSE 8082
-EXPOSE 8081
+FROM maven:3.8.3-openjdk-17 AS build
+
+WORKDIR /Back
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
+EXPOSE 8080
 EXPOSE 8082
-# Install curl in the container
-RUN apt-get update && apt-get install -y curl
-
-# Copy the JAR file built in Stage 1 to the container
-COPY --from=builder /Back/target/DevOps_Project-1.0.jar /DevOps_Project-1.0.jar
-
-ENV JAVA_OPTS="-Dlogging.level.org.springframework.security=DEBUG -Djdk.tls.client.protocols=TLSv1.2"
-ENTRYPOINT ["java", "-jar", "/DevOps_Project-1.0.jar"]
+ENTRYPOINT ["java", "-jar", "DevOps_Project.jar"]
