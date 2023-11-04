@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 services:
   mysql:
     image: mysql:latest
@@ -13,11 +13,13 @@ services:
     restart: unless-stopped
   
   backend:
+    depends_on:
+      - mysql
     image: ghazi11/back
+    build: ./DevOps_Project
     ports:
       - "8082:8080"  # Map port 8081 on the host to port 8080 on the container
     restart: always
-    build: .
     environment:
       MYSQL_HOST: mysql
       MYSQL_USER: root
@@ -29,4 +31,3 @@ services:
     ports:
       - "80:80"  # Map port 80 on the host to port 80 on the container
 
-  
