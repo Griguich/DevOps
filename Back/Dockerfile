@@ -2,8 +2,8 @@ FROM openjdk:11
 
 WORKDIR /Back
 
-COPY . .
+ADD target/DevOps_Project-1.0.jar DevOps_Project.jar
 
-RUN mvn clean install
+ENTRYPOINT ["java", "-jar", "DevOps_Project.jar"]
 
-CMD mvn spring-boot:run
+
