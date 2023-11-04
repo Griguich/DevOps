@@ -12,11 +12,11 @@ services:
       - docker-net
     volumes:
       - /home/ghazi/Desktop/DB:/var/lib/mysql
-    restart: unless-stopped
+    
   
   backend:
     depends_on:
-      - mysql
+      - mysql:latest
     image: ghazi11/back
     build: .
     ports:
