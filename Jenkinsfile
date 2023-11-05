@@ -43,7 +43,9 @@ pipeline {
 
         stage('MVN SONARQUBE') {
             steps {
+                dir('Back') {
                 sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=ghazi123'
+            }
             }
         }
         
