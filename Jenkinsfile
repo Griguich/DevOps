@@ -56,7 +56,7 @@ pipeline {
             }
         }
         
-        /*stage('Build Frontend') {
+        stage('Build Frontend') {
             steps {
                 dir('Frant') {
                     script {
@@ -68,7 +68,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
         stage('Login Docker') {
         steps {
         script {
@@ -90,7 +90,7 @@ pipeline {
             }
         }
 
-       /* stage('Build Docker Image (Frontend)') {
+        stage('Build Docker Image (Frontend)') {
             steps {
                 dir('Frant') {
                     script {
@@ -100,7 +100,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
         
         stage('Deploy Front/Back/DB') {
             steps {
