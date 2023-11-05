@@ -7,4 +7,5 @@ COPY pom.xml /home/app
 RUN mvn -f /home/app/pom.xml clean package
 EXPOSE 8080
 EXPOSE 8082
+WORKDIR /target
 ENTRYPOINT ["java", "-jar", "DevOps_Project-1.0.jar"]
