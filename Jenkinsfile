@@ -48,6 +48,13 @@ pipeline {
             }
             }
         }
+        stage('NEXUS') {
+            steps {
+                dir('Back') {
+                sh 'mvn clean deploy -DskipTests'
+            }
+            }
+        }
         
         /*stage('Build Frontend') {
             steps {
