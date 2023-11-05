@@ -83,8 +83,8 @@ pipeline {
             steps {
                 dir('Back') {
                     script {
-                        sh 'docker build -t ghazi11/back .'
-                        sh 'docker push ghazi11/back'
+                        sh 'docker build -t ghazi11/back1 .'
+                        sh 'docker push ghazi11/back1'
                     }
                 }
             }
