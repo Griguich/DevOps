@@ -17,7 +17,7 @@ services:
   backend:
     depends_on:
       - mysql
-    image: ghazi11/back
+    image: ghazi11/back1
     build: .
     ports:
       - "8082:8080"  # Map port 8081 on the host to port 8080 on the container
