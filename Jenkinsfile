@@ -40,6 +40,12 @@ pipeline {
                 }
             }
         }
+
+        stage('MVN SONARQUBE') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=ghazi123'
+            }
+        }
         
         /*stage('Build Frontend') {
             steps {
