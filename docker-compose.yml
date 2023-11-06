@@ -1,3 +1,59 @@
+
+
+  version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysqldb
+    ports:
+      - "3306:3306"  # Map host port 3306 to container port 3306
+    environment:
+      MYSQL_DATABASE: mysql
+    volumes:
+      - ./data.sql:/docker-entrypoint-initdb.d/data.sql
+    networks:
+      - docker-network
+
+  spring:
+    image: iskander20/devopsproject:backapp
+    container_name: spring-back-project
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mysql-db?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD:
+    depends_on:
+      mysql
+    networks:
+      - my-network
+    volumes:
+      - ./backend-data:/app/data
+
+  angular:
+    image: iskander20/devopsproject:frontapp
+    container_name: angular-front-project
+    ports:
+      - "80:80"
+    depends_on:
+      - spring
+    networks:
+      - my-network
+    volumes:
+      - ./frontend-data:/app/dist
+
+networks:
+  my-network:
+
+
+
+
+
+
+
+
+
+
 version: '3.8'
 services:
   mysql:
