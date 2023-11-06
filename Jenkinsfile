@@ -8,7 +8,7 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
     stages {
-        stage('Checkout') {
+        stage('GIT') {
             steps {
                 checkout scm
             }
@@ -16,7 +16,7 @@ pipeline {
 
          
         
-        stage('Send Email Notification') {
+        stage(' UNIT TESTES AND NOTIF') {
             steps {
                 dir('Back') {
                     script {
@@ -62,16 +62,7 @@ pipeline {
                 }
             }
         }
-        stage('UNIT TESTES') {
-            steps {
-                dir('Back') {
-                    script {
-                        sh 'mvn clean install' 
-                    }
-                }
-            }
-        }
-
+        
         stage('SONARQUBE') {
             steps {
                 dir('Back') {
