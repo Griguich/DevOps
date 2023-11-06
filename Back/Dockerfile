@@ -7,4 +7,4 @@ COPY pom.xml /home/app
 RUN mvn -f /home/app/pom.xml clean install
 EXPOSE 8080
 EXPOSE 8082
-ENTRYPOINT ["java", "-jar", "app-1.0.jar"]
+ENTRYPOINT ["java", "-jar", "*.jar"]
