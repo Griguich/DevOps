@@ -30,17 +30,12 @@ services:
     volumes:
       - ./home/ghazi/Desktop/DB:/app/data
 
-  angular:
-    image: ghazi11/frantend
-    container_name: test3_frantend_1
-    ports:
-      - "80:80"
-    depends_on:
-      - spring
+   frontend:
+    image: ghazi11/frant
     networks:
-      - docker-network
-    volumes:
-      - ./home/ghazi/Desktop/DB:/app/dist
+      - docker-net
+    ports:
+      - "80:80"  # Map port 80 on the host to port 80 on the container
 
 networks:
   docker-network:
@@ -49,3 +44,43 @@ networks:
 
 
 
+
+
+
+
+
+version: '3.8'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysqldb
+    ports:
+      - "3333:3306"  # Map port 3333 on the host to port 3306 on the container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: devops
+    networks:
+      - docker-net
+    volumes:
+      - /home/ghazi/Desktop/DB:/var/lib/mysql
+    
+  
+  backend:
+    depends_on:
+      - mysql
+    image: ghazi11/back1
+    build: .
+    ports:
+      - "8082:8080"  # Map port 8081 on the host to port 8080 on the container
+    networks:
+      - docker-net
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_PORT: 3306
+
+ 
+
+networks:
+  docker-net:
