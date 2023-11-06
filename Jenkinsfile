@@ -120,7 +120,7 @@ pipeline {
                 }
             }
         }
-        stage('CREATE DOCKER IMAGE BACK') {
+        stage('CREATE DOCKER IMAGE FRONT') {
             steps {
                 dir('Frant') {
                     script {
