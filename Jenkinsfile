@@ -14,7 +14,7 @@ pipeline {
             }
         }
         
-        /*stage('Send Email Notification') {
+        stage('Send Email Notification') {
             steps {
                 script {
                     def contenuReadMe = readFile('README.md')
@@ -30,8 +30,8 @@ pipeline {
                     )
                 }
             }
-        }*/
-        /*stage('Run Unit Tests') {
+        }
+        stage('Run Unit Tests') {
             steps {
                 dir('Back') {
                     script {
@@ -39,9 +39,9 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
 
-        /*stage('MVN SONARQUBE') {
+        stage('MVN SONARQUBE') {
             steps {
                 dir('Back') {
                 sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=ghazi123'
@@ -54,9 +54,9 @@ pipeline {
                 sh 'mvn clean deploy -DskipTests'
             }
             }
-        }*/
+        }
         
-        /*stage('Build Frontend') {
+        stage('Build Frontend') {
             steps {
                 dir('Frant') {
                     script {
@@ -68,7 +68,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
         stage('Login Docker') {
         steps {
         script {
