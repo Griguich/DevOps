@@ -13,25 +13,56 @@ pipeline {
                 checkout scm
             }
         }
+
+         
         
         stage('Send Email Notification') {
             steps {
-                script {
-                    def contenuReadMe = readFile('README.md')
-                    
-                    def subject = 'New Project Commit - Mario'
-                    def body = "A new commit has been made to the repository..\n\n${contenuReadMe}"
-                    def to = 't9876924@gmail.com'
-                    
-                    mail(
-                        subject: subject,
-                        body: body,
-                        to: to,
-                    )
+                dir('Back') {
+                    script {
+                        try {
+                            sh 'mvn clean install'
+                        } catch (Exception e) {
+                            currentBuild.result = 'FAILURE'
+                            error("Build failed: ${e.message}")
+                        }
+                    }
+                }
+            }
+
+            post {
+                success {
+                    script {
+                        def subject = "Test and Build Check"
+                        def body = "BUILD GOOD"
+                        def to = 't9876924@gmail.com'
+
+                        mail(
+                            subject: subject,
+                            body: body,
+                            to: to,
+                        )
+                    }
+                }
+                failure {
+                    script {
+                        def subject = "Build Failure - ${currentBuild.fullDisplayName}"
+                        def body = "The build has failed "
+                        def to = 't9876924@gmail.com'
+
+                        mail(
+                            subject: subject,
+                            body: body,
+                            to: to,
+                        )
+                    }
+                }
+                always {
+                    junit '**/target/surefire-reports/TEST-*.xml'
                 }
             }
         }
-        stage('Run Unit Tests') {
+        stage('UNIT TESTES') {
             steps {
                 dir('Back') {
                     script {
@@ -41,7 +72,7 @@ pipeline {
             }
         }
 
-        stage('MVN SONARQUBE') {
+        stage('SONARQUBE') {
             steps {
                 dir('Back') {
                 sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=ghazi123'
@@ -56,7 +87,7 @@ pipeline {
             }
         }
         
-        stage('Build Frontend') {
+        stage('BBUILD FRONT') {
             steps {
                 dir('Frant') {
                     script {
@@ -69,7 +100,7 @@ pipeline {
                 }
             }
         }
-        stage('Login Docker') {
+        stage('LOGIN DOCKER') {
         steps {
         script {
             sh 'echo ghazi1234 | docker login -u ghazi11 --password-stdin'
@@ -79,7 +110,7 @@ pipeline {
         
         
 
-        stage('Build & Push Docker Image (Backend)') {
+        stage('CREATE DOCKER IMAGE BACK') {
             steps {
                 dir('Back') {
                     script {
@@ -89,7 +120,7 @@ pipeline {
                 }
             }
         }
-        stage('Build Docker Image (Frontend)') {
+        stage('CREATE DOCKER IMAGE BACK') {
             steps {
                 dir('Frant') {
                     script {
@@ -101,7 +132,7 @@ pipeline {
             }
         }
         
-        stage('Deploy Front/Back/DB') {
+        stage('DEPLOY APP') {
             steps {
                 
                 script {
