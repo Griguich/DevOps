@@ -1,5 +1,3 @@
-
-
 version: '3'
 services:
   mysql:
@@ -30,7 +28,7 @@ services:
     volumes:
       - ./home/ghazi/Desktop/DB:/app/data
 
-   frontend:
+  frontend:
     image: ghazi11/frant
     networks:
       - docker-net

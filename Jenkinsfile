@@ -41,7 +41,7 @@ pipeline {
             }
         }
 
-        stage('MVN SONARQUBE') {
+        /*stage('MVN SONARQUBE') {
             steps {
                 dir('Back') {
                 sh 'mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=ghazi123'
@@ -54,9 +54,9 @@ pipeline {
                 sh 'mvn clean deploy -DskipTests'
             }
             }
-        }
+        }*/
         
-        stage('Build Frontend') {
+        /*stage('Build Frontend') {
             steps {
                 dir('Frant') {
                     script {
@@ -68,7 +68,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
         stage('Login Docker') {
         steps {
         script {
@@ -79,7 +79,7 @@ pipeline {
         
         
 
-        stage('Build & Push Docker Image (Backend)') {
+        /*stage('Build & Push Docker Image (Backend)') {
             steps {
                 dir('Back') {
                     script {
@@ -88,9 +88,9 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
 
-        stage('Build Docker Image (Frontend)') {
+        /*stage('Build Docker Image (Frontend)') {
             steps {
                 dir('Frant') {
                     script {
@@ -100,7 +100,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
         
         stage('Deploy Front/Back/DB') {
             steps {
