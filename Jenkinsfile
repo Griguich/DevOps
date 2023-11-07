@@ -33,8 +33,8 @@ pipeline {
             post {
                 success {
                     script {
-                        def subject = "Test and Build Check"
-                        def body = "BUILD GOOD"
+                        def subject = "CHECK TESTES"
+                        def body = "SUCCESS !!"
                         def to = 't9876924@gmail.com'
 
                         mail(
@@ -57,9 +57,7 @@ pipeline {
                         )
                     }
                 }
-                always {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                }
+                
             }
         }
         
@@ -106,7 +104,7 @@ pipeline {
                 dir('Back') {
                     script {
                         sh 'docker build -t ghazi11/back1 .'
-                        
+
                         sh 'docker push ghazi11/back1'
                     }
                 }
