@@ -16,7 +16,7 @@ services:
     image: ghazi11/back1
     container_name: test3_backend_1
     ports:
-      - "8081:8081"
+      - "8082:8081"
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mysql?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
@@ -31,54 +31,10 @@ services:
   frontend:
     image: ghazi11/frant
     networks:
-      - docker-net
+      - docker-network
     ports:
       - "80:80"  # Map port 80 on the host to port 80 on the container
 
 networks:
   docker-network:
 
-
-
-
-
-
-
-
-
-
-version: '3.8'
-services:
-  mysql:
-    image: mysql:latest
-    container_name: mysqldb
-    ports:
-      - "3333:3306"  # Map port 3333 on the host to port 3306 on the container
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: devops
-    networks:
-      - docker-net
-    volumes:
-      - /home/ghazi/Desktop/DB:/var/lib/mysql
-    
-  
-  backend:
-    depends_on:
-      - mysql
-    image: ghazi11/back1
-    build: .
-    ports:
-      - "8082:8080"  # Map port 8081 on the host to port 8080 on the container
-    networks:
-      - docker-net
-    environment:
-      MYSQL_HOST: mysql
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
-      MYSQL_PORT: 3306
-
- 
-
-networks:
-  docker-net:

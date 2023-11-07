@@ -106,6 +106,7 @@ pipeline {
                 dir('Back') {
                     script {
                         sh 'docker build -t ghazi11/back1 .'
+                        
                         sh 'docker push ghazi11/back1'
                     }
                 }
