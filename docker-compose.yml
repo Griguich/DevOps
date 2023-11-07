@@ -25,7 +25,7 @@ services:
       mysql
     networks:
       - docker-network
-    volumes:
+    volumes: 
       - ./home/ghazi/Desktop/DB:/app/data
 
   frontend:
